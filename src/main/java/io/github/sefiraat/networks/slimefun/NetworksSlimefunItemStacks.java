@@ -7,20 +7,12 @@ import io.github.sefiraat.networks.slimefun.network.NetworkQuantumStorage;
 import io.github.sefiraat.networks.slimefun.tools.NetworkRemote;
 import io.github.sefiraat.networks.utils.Themes;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
-import io.github.thebusybiscuit.slimefun4.implementation.items.LimitedUseItem;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.collections.Pair;
 import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
-import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
 import lombok.experimental.UtilityClass;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
-
-import javax.annotation.Nonnull;
-import java.text.MessageFormat;
 
 /**
  * Creating SlimefunItemstacks here due to some items being created in Enums so this will
@@ -72,6 +64,7 @@ public class NetworksSlimefunItemStacks {
     public static final SlimefunItemStack NETWORK_CAPACITOR_1;
     public static final SlimefunItemStack NETWORK_CAPACITOR_2;
     public static final SlimefunItemStack NETWORK_CAPACITOR_3;
+    public static final SlimefunItemStack NETWORK_CAPACITOR_4;
     public static final SlimefunItemStack NETWORK_POWER_OUTLET_1;
     public static final SlimefunItemStack NETWORK_POWER_OUTLET_2;
     public static final SlimefunItemStack NETWORK_POWER_DISPLAY;
@@ -408,6 +401,16 @@ public class NetworksSlimefunItemStacks {
             new ItemStack(Material.BLACK_GLAZED_TERRACOTTA),
             Themes.MACHINE,
             "network-capacitor-3",
+            Theme.CLICK_INFO,
+            Theme.PASSIVE,
+            100000
+        );
+
+        NETWORK_CAPACITOR_4 = Networks.getLanguageManager().getThemedStack(
+            "NTW_CAPACITOR_4",
+            new ItemStack(Material.GRAY_GLAZED_TERRACOTTA),
+            Themes.MACHINE,
+            "network-capacitor-4",
             Theme.CLICK_INFO,
             Theme.PASSIVE,
             1000000

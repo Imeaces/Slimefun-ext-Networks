@@ -1,6 +1,5 @@
 package io.github.sefiraat.networks.slimefun.tools;
 
-import dev.sefiraat.sefilib.string.TextUtils;
 import dev.sefiraat.sefilib.string.Theme;
 import io.github.sefiraat.networks.Networks;
 import io.github.sefiraat.networks.network.stackcaches.BlueprintInstance;

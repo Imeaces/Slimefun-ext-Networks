@@ -3,7 +3,6 @@ package io.github.sefiraat.networks.slimefun.tools;
 import dev.sefiraat.sefilib.string.Theme;
 import io.github.sefiraat.networks.Networks;
 import io.github.sefiraat.networks.slimefun.network.NetworkController;
-import io.github.sefiraat.networks.utils.Themes;
 import io.github.thebusybiscuit.slimefun4.api.events.PlayerRightClickEvent;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;

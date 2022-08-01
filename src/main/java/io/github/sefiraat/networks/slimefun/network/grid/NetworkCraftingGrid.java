@@ -7,7 +7,6 @@ import io.github.sefiraat.networks.network.GridItemRequest;
 import io.github.sefiraat.networks.network.NodeDefinition;
 import io.github.sefiraat.networks.network.SupportedRecipes;
 import io.github.sefiraat.networks.slimefun.NetworkSlimefunItems;
-import io.github.sefiraat.networks.utils.Themes;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;

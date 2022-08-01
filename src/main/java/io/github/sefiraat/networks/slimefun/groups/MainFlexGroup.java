@@ -22,7 +22,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import javax.annotation.ParametersAreNonnullByDefault;
-import java.util.List;
 
 /**
  * @noinspection deprecation

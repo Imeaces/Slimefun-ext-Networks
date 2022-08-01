@@ -4,8 +4,6 @@ import dev.sefiraat.sefilib.itemstacks.Cooldowns;
 import dev.sefiraat.sefilib.string.Theme;
 import io.github.sefiraat.networks.Networks;
 import io.github.sefiraat.networks.utils.Keys;
-import io.github.sefiraat.networks.utils.StackUtils;
-import io.github.sefiraat.networks.utils.Themes;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 

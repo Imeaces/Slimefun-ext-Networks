@@ -3,7 +3,6 @@ package io.github.sefiraat.networks.slimefun.tools;
 import dev.sefiraat.sefilib.string.Theme;
 import io.github.sefiraat.networks.network.stackcaches.CardInstance;
 import io.github.sefiraat.networks.utils.Keys;
-import io.github.sefiraat.networks.utils.Themes;
 import io.github.sefiraat.networks.utils.datatypes.DataTypeMethods;
 import io.github.sefiraat.networks.utils.datatypes.PersistentCardInstanceType;
 import io.github.thebusybiscuit.slimefun4.api.events.PlayerRightClickEvent;
@@ -13,7 +12,6 @@ import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.DistinctiveItem;
 import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
-import net.guizhanss.guizhanlib.slimefun.addon.WikiSetup;
 import org.bukkit.Material;
 import org.bukkit.Tag;
 import org.bukkit.entity.Player;
@@ -100,7 +98,7 @@ public class NetworkCard extends SlimefunItem implements DistinctiveItem {
 
     @Override
     public void postRegister() {
-        WikiSetup.setupItem(this, WIKI_PAGE);
+        addWikiPage(WIKI_PAGE);
     }
 
     @Override

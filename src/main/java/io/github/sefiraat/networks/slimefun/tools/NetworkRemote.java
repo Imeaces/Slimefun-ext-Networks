@@ -5,7 +5,6 @@ import dev.sefiraat.sefilib.string.Theme;
 import io.github.sefiraat.networks.Networks;
 import io.github.sefiraat.networks.slimefun.network.grid.NetworkGrid;
 import io.github.sefiraat.networks.utils.Keys;
-import io.github.sefiraat.networks.utils.Themes;
 import io.github.sefiraat.networks.utils.datatypes.DataTypeMethods;
 import io.github.thebusybiscuit.slimefun4.api.events.PlayerRightClickEvent;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
@@ -17,7 +16,6 @@ import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.protection.Interaction;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
-import net.guizhanss.guizhanlib.slimefun.addon.WikiSetup;
 import org.bukkit.Location;
 import org.bukkit.NamespacedKey;
 import org.bukkit.block.Block;
@@ -145,6 +143,6 @@ public class NetworkRemote extends SlimefunItem {
 
     @Override
     public void postRegister() {
-        WikiSetup.setupItem(this, WIKI_PAGE);
+        addWikiPage(WIKI_PAGE);
     }
 }

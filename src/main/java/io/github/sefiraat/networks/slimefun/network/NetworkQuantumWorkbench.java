@@ -29,7 +29,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

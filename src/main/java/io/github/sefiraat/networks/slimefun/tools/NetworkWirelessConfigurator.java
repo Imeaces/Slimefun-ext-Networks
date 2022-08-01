@@ -6,7 +6,6 @@ import io.github.sefiraat.networks.Networks;
 import io.github.sefiraat.networks.slimefun.network.NetworkWirelessReceiver;
 import io.github.sefiraat.networks.slimefun.network.NetworkWirelessTransmitter;
 import io.github.sefiraat.networks.utils.Keys;
-import io.github.sefiraat.networks.utils.Themes;
 import io.github.thebusybiscuit.slimefun4.api.events.PlayerRightClickEvent;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;

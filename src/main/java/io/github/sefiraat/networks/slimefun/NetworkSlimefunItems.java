@@ -562,15 +562,15 @@ public class NetworkSlimefunItems {
         );
 
         NETWORK_CAPACITOR_4 = new NetworkPowerNode(
-                NetworksItemGroups.NETWORK_ITEMS,
-                NetworksSlimefunItemStacks.NETWORK_CAPACITOR_4,
-                RecipeType.ENHANCED_CRAFTING_TABLE,
-                new ItemStack[]{
-                        NETWORK_CAPACITOR_3.getItem(), NETWORK_CAPACITOR_3.getItem(), NETWORK_CAPACITOR_3.getItem(),
-                        NETWORK_CAPACITOR_3.getItem(), SlimefunItems.ENERGIZED_CAPACITOR, NETWORK_CAPACITOR_3.getItem(),
-                        NETWORK_CAPACITOR_3.getItem(), NETWORK_CAPACITOR_3.getItem(), NETWORK_CAPACITOR_3.getItem(),
-                },
-                1000000
+            NetworksItemGroups.NETWORK_ITEMS,
+            NetworksSlimefunItemStacks.NETWORK_CAPACITOR_4,
+            RecipeType.ENHANCED_CRAFTING_TABLE,
+            new ItemStack[]{
+                    NETWORK_CAPACITOR_3.getItem(), NETWORK_CAPACITOR_3.getItem(), NETWORK_CAPACITOR_3.getItem(),
+                    NETWORK_CAPACITOR_3.getItem(), SlimefunItems.ENERGIZED_CAPACITOR, NETWORK_CAPACITOR_3.getItem(),
+                    NETWORK_CAPACITOR_3.getItem(), NETWORK_CAPACITOR_3.getItem(), NETWORK_CAPACITOR_3.getItem(),
+            },
+            1000000
         );
 
         NETWORK_POWER_OUTLET_1 = new NetworkPowerOutlet(

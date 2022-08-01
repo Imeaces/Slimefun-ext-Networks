@@ -194,11 +194,9 @@
         <!-- 汉化库 -->
         <dependency>
             <groupId>net.guizhanss</groupId>
-            <artifactId>GuizhanLib</artifactId>
-            <version>0.9.9</version>
-            <scope>compile</scope>
+            <artifactId>GuizhanLibPlugin</artifactId>
+            <version>1.0.0</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
-
-
 </project>

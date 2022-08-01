@@ -13,7 +13,6 @@ import io.github.sefiraat.networks.slimefun.NetworkSlimefunItems;
 import io.github.sefiraat.networks.slimefun.tools.CraftingBlueprint;
 import io.github.sefiraat.networks.utils.Keys;
 import io.github.sefiraat.networks.utils.StackUtils;
-import io.github.sefiraat.networks.utils.Themes;
 import io.github.sefiraat.networks.utils.datatypes.DataTypeMethods;
 import io.github.sefiraat.networks.utils.datatypes.PersistentCraftingBlueprintType;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;

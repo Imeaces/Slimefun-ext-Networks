@@ -1,7 +1,6 @@
 package io.github.sefiraat.networks.network.stackcaches;
 
 import dev.sefiraat.sefilib.string.Theme;
-import io.github.sefiraat.networks.utils.Themes;
 import net.guizhanss.guizhanlib.minecraft.helper.inventory.ItemStackHelper;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
