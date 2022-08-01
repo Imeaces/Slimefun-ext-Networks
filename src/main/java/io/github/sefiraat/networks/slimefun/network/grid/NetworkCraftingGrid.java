@@ -1,11 +1,13 @@
 package io.github.sefiraat.networks.slimefun.network.grid;
 
+import dev.sefiraat.sefilib.string.Theme;
 import io.github.sefiraat.networks.NetworkStorage;
+import io.github.sefiraat.networks.Networks;
 import io.github.sefiraat.networks.network.GridItemRequest;
 import io.github.sefiraat.networks.network.NodeDefinition;
 import io.github.sefiraat.networks.network.SupportedRecipes;
 import io.github.sefiraat.networks.slimefun.NetworkSlimefunItems;
-import io.github.sefiraat.networks.utils.Theme;
+import io.github.sefiraat.networks.utils.Themes;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
@@ -52,9 +54,8 @@ public class NetworkCraftingGrid extends AbstractGrid {
 
     private static final CustomItemStack CRAFT_BUTTON_STACK = new CustomItemStack(
         Material.CRAFTING_TABLE,
-        Theme.CLICK_INFO.getColor() + "合成",
-        Theme.CLICK_INFO + "左键点击: " + Theme.PASSIVE + "合成",
-        Theme.CLICK_INFO + "Shift+左键点击: " + Theme.PASSIVE + "将合成台内物品送回网络"
+        Networks.getLanguageManager().getGuiIconName("crafting-grid-craft"),
+        Networks.getLanguageManager().getGuiIconLore("crafting-grid-craft", Theme.CLICK_INFO, Theme.PASSIVE)
     );
 
     private static final Map<Location, GridCache> CACHE_MAP = new HashMap<>();

@@ -1,6 +1,7 @@
 package io.github.sefiraat.networks.network.stackcaches;
 
-import io.github.sefiraat.networks.utils.Theme;
+import dev.sefiraat.sefilib.string.Theme;
+import io.github.sefiraat.networks.utils.Themes;
 import net.guizhanss.guizhanlib.minecraft.helper.inventory.ItemStackHelper;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -105,8 +106,8 @@ public class QuantumCache extends ItemStackCache {
         if (getItemStack() != null) {
             itemName = ItemStackHelper.getDisplayName(this.getItemStack());
         }
-        lore.add(Theme.CLICK_INFO + "物品: " + itemName);
-        lore.add(Theme.CLICK_INFO + "数量: " + this.getAmount());
+        lore.set(lore.size() - 2, Theme.CLICK_INFO + "物品: " + itemName);
+        lore.set(lore.size() - 1, Theme.CLICK_INFO + "数量: " + this.getAmount());
         itemMeta.setLore(lore);
     }
 }

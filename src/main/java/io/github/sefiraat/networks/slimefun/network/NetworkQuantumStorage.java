@@ -1,9 +1,12 @@
 package io.github.sefiraat.networks.slimefun.network;
 
+import dev.sefiraat.sefilib.string.TextUtils;
+import dev.sefiraat.sefilib.string.Theme;
+import io.github.sefiraat.networks.Networks;
 import io.github.sefiraat.networks.network.stackcaches.QuantumCache;
 import io.github.sefiraat.networks.utils.Keys;
 import io.github.sefiraat.networks.utils.StackUtils;
-import io.github.sefiraat.networks.utils.Theme;
+import io.github.sefiraat.networks.utils.Themes;
 import io.github.sefiraat.networks.utils.datatypes.DataTypeMethods;
 import io.github.sefiraat.networks.utils.datatypes.PersistentQuantumStorageType;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
@@ -69,30 +72,29 @@ public class NetworkQuantumStorage extends SlimefunItem implements DistinctiveIt
 
     private static final ItemStack BACK_INPUT = new CustomItemStack(
         Material.GREEN_STAINED_GLASS_PANE,
-        Theme.PASSIVE + "输入"
+        Theme.PASSIVE + Networks.getLanguageManager().getGuiIconName("input-items")
     );
 
     private static final ItemStack BACK_ITEM = new CustomItemStack(
         Material.BLUE_STAINED_GLASS_PANE,
-        Theme.PASSIVE + "当前存储的物品"
+        Theme.PASSIVE + Networks.getLanguageManager().getGuiIconName("stored-item")
     );
 
     private static final ItemStack NO_ITEM = new CustomItemStack(
         Material.RED_STAINED_GLASS_PANE,
-        Theme.ERROR + "未指定物品",
-        Theme.PASSIVE + "拿起物品并点击下方的按钮",
-        Theme.PASSIVE + "以设置量子存储保存的物品"
+        Networks.getLanguageManager().getGuiIconName("no-item-registered", Theme.ERROR),
+        Networks.getLanguageManager().getGuiIconLore("no-item-registered", Theme.PASSIVE)
     );
 
     private static final ItemStack SET_ITEM = new CustomItemStack(
         Material.LIME_STAINED_GLASS_PANE,
-        Theme.SUCCESS + "设置",
-        Theme.PASSIVE + "拿起物品并点击这里以设置物品",
-        Theme.CLICK_INFO + "Shift+左键点击" + Theme.PASSIVE + "切换满载清空输入");
+        Networks.getLanguageManager().getGuiIconName("set-item", Theme.SUCCESS),
+        Networks.getLanguageManager().getGuiIconLore("set-item", Theme.PASSIVE)
+    );
 
     private static final ItemStack BACK_OUTPUT = new CustomItemStack(
         Material.ORANGE_STAINED_GLASS_PANE,
-        Theme.PASSIVE + "输出"
+        Theme.PASSIVE + Networks.getLanguageManager().getGuiIconName("output-items")
     );
 
     private static final int[] INPUT_SLOTS = new int[]{0, 2};
@@ -209,7 +211,9 @@ public class NetworkQuantumStorage extends SlimefunItem implements DistinctiveIt
 
         final QuantumCache cache = CACHES.get(blockMenu.getLocation());
         if (cache == null || cache.getAmount() > 0) {
-            player.sendMessage(Theme.WARNING + "量子存储必须为空才能更换物品");
+            player.sendMessage(
+                Networks.getLanguageManager().getPlayerMessage("quantum-must-be-empty", Theme.ERROR)
+            );
             return;
         }
         itemStack.setAmount(1);
@@ -431,9 +435,13 @@ public class NetworkQuantumStorage extends SlimefunItem implements DistinctiveIt
             final ItemStack itemStack = cache.getItemStack().clone();
             final ItemMeta itemMeta = itemStack.getItemMeta();
             final List<String> lore = itemMeta.hasLore() ? itemMeta.getLore() : new ArrayList<>();
+
+            final String langVoiding = Networks.getLanguageManager().getString("gui.strings.voiding");
+            final String langAmouunt = Networks.getLanguageManager().getString("gui.strings.amount");
+
             lore.add("");
-            lore.add(Theme.CLICK_INFO + "满载清空输入: " + Theme.PASSIVE + BooleanHelper.enabledOrDisabled(cache.isVoidExcess()));
-            lore.add(Theme.CLICK_INFO + "数量: " + Theme.PASSIVE + cache.getAmount());
+            lore.add(Theme.CLICK_INFO + langVoiding + ": " + Theme.PASSIVE + TextUtils.toTitleCase(String.valueOf(cache.isVoidExcess())));
+            lore.add(Theme.CLICK_INFO + langAmouunt + ": " + Theme.PASSIVE + cache.getAmount());
             itemMeta.setLore(lore);
             itemStack.setItemMeta(itemMeta);
             itemStack.setAmount(1);

@@ -1,6 +1,7 @@
 package io.github.sefiraat.networks.network.stackcaches;
 
-import io.github.sefiraat.networks.utils.Theme;
+import dev.sefiraat.sefilib.string.Theme;
+import io.github.sefiraat.networks.utils.Themes;
 import net.guizhanss.guizhanlib.minecraft.helper.MaterialHelper;
 import org.bukkit.ChatColor;
 import org.bukkit.inventory.ItemStack;

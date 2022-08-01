@@ -1,8 +1,12 @@
 package io.github.sefiraat.networks.slimefun.tools;
 
+import dev.sefiraat.sefilib.localization.LanguageManager;
+import dev.sefiraat.sefilib.string.Theme;
+import io.github.sefiraat.networks.Networks;
+import io.github.sefiraat.networks.managers.NetworksLanguageManager;
 import io.github.sefiraat.networks.network.NetworkRoot;
 import io.github.sefiraat.networks.slimefun.network.NetworkController;
-import io.github.sefiraat.networks.utils.Theme;
+import io.github.sefiraat.networks.utils.Themes;
 import io.github.thebusybiscuit.slimefun4.api.events.PlayerRightClickEvent;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
@@ -80,33 +84,42 @@ public class NetworkProbe extends SlimefunItem implements CanCooldown {
             final ChatColor c = Theme.CLICK_INFO.getColor();
             final ChatColor p = Theme.PASSIVE.getColor();
 
-            player.sendMessage("------------------------------");
-            player.sendMessage("         网络 - 组件统计        ");
-            player.sendMessage("------------------------------");
-
-            player.sendMessage(MESSAGE_FORMAT.format(new Object[]{c, "网桥", p, bridges}, new StringBuffer(), null).toString());
-            player.sendMessage(MESSAGE_FORMAT.format(new Object[]{c, "网络监测器", p, monitors}, new StringBuffer(), null).toString());
-            player.sendMessage(MESSAGE_FORMAT.format(new Object[]{c, "网络入口", p, importers}, new StringBuffer(), null).toString());
-            player.sendMessage(MESSAGE_FORMAT.format(new Object[]{c, "网络出口", p, exporters}, new StringBuffer(), null).toString());
-            player.sendMessage(MESSAGE_FORMAT.format(new Object[]{c, "网格", p, grids}, new StringBuffer(), null).toString());
-            player.sendMessage(MESSAGE_FORMAT.format(new Object[]{c, "网络单元", p, cells}, new StringBuffer(), null).toString());
-            player.sendMessage(MESSAGE_FORMAT.format(new Object[]{c, "网络内存清除器", p, wipers}, new StringBuffer(), null).toString());
-            player.sendMessage(MESSAGE_FORMAT.format(new Object[]{c, "网络抓取器", p, grabbers}, new StringBuffer(), null).toString());
-            player.sendMessage(MESSAGE_FORMAT.format(new Object[]{c, "网络推送器", p, pushers}, new StringBuffer(), null).toString());
-            player.sendMessage(MESSAGE_FORMAT.format(new Object[]{c, "网络清除器", p, purgers}, new StringBuffer(), null).toString());
-            player.sendMessage(MESSAGE_FORMAT.format(new Object[]{c, "网络自动合成机", p, crafters}, new StringBuffer(), null).toString());
-            player.sendMessage(MESSAGE_FORMAT.format(new Object[]{c, "网络能源节点", p, powerNodes}, new StringBuffer(), null).toString());
-            player.sendMessage(MESSAGE_FORMAT.format(new Object[]{c, "网络电表", p, powerDisplays}, new StringBuffer(), null).toString());
-            player.sendMessage(MESSAGE_FORMAT.format(new Object[]{c, "网络配方编码器", p, encoders}, new StringBuffer(), null).toString());
-            player.sendMessage(MESSAGE_FORMAT.format(new Object[]{c, "物品类型数量", p, distinctItems}, new StringBuffer(), null).toString());
-            player.sendMessage(MESSAGE_FORMAT.format(new Object[]{c, "累计物品数量", p, totalItems}, new StringBuffer(), null).toString());
+            final NetworksLanguageManager lm = Networks.getLanguageManager();
 
             player.sendMessage("------------------------------");
-            player.sendMessage(MESSAGE_FORMAT.format(new Object[]{c, "累计节点", p, nodeCount + "/" + root.getMaxNodes()}, new StringBuffer(), null).toString());
+            player.sendMessage(lm.getPlayerMessage("probe.summary"));
+            player.sendMessage("------------------------------");
+
+            player.sendMessage(lm.getStringArray(
+                "messages.player.probe.message",
+                c,
+                p,
+                bridges,
+                monitors,
+                importers,
+                exporters,
+                grids,
+                cells,
+                wipers,
+                grabbers,
+                pushers,
+                purgers,
+                crafters,
+                powerNodes,
+                powerDisplays,
+                encoders,
+                distinctItems,
+                totalItems,
+                nodeCount,
+                root.getMaxNodes()
+            ));
+
             if (root.isOverburdened()) {
-                player.sendMessage(Theme.ERROR + "警告: " + Theme.PASSIVE +
-                    "该网络已达到最大节点数量限制，部分节点可能会无法正常工作。请减少网络节点的数量。"
-                );
+                player.sendMessage(Networks.getLanguageManager().getPlayerMessage(
+                    "probe.warning",
+                    Theme.WARNING,
+                    Theme.PASSIVE
+                ));
             }
         }
     }

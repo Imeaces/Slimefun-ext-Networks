@@ -1,11 +1,14 @@
 package io.github.sefiraat.networks.slimefun.tools;
 
 import de.jeff_media.morepersistentdatatypes.DataType;
+import dev.sefiraat.sefilib.itemstacks.GeneralItemStackUtils;
+import dev.sefiraat.sefilib.string.Theme;
+import io.github.sefiraat.networks.Networks;
 import io.github.sefiraat.networks.slimefun.network.NetworkDirectional;
 import io.github.sefiraat.networks.slimefun.network.NetworkPusher;
 import io.github.sefiraat.networks.utils.Keys;
 import io.github.sefiraat.networks.utils.StackUtils;
-import io.github.sefiraat.networks.utils.Theme;
+import io.github.sefiraat.networks.utils.Themes;
 import io.github.sefiraat.networks.utils.datatypes.DataTypeMethods;
 import io.github.thebusybiscuit.slimefun4.api.events.PlayerRightClickEvent;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
@@ -55,7 +58,10 @@ public class NetworkConfigurator extends SlimefunItem {
                                 applyConfig(directional, e.getItem(), blockMenu, player);
                             }
                         } else {
-                            player.sendMessage(Theme.ERROR + "你必须指向一个带方向选择的网络方块");
+                            player.sendMessage(Networks.getLanguageManager().getPlayerMessage(
+                                "configurator.wrong-block",
+                                Theme.WARNING
+                            ));
                         }
                     }
                     e.cancel();
@@ -68,7 +74,10 @@ public class NetworkConfigurator extends SlimefunItem {
         final BlockFace blockFace = NetworkDirectional.getSelectedFace(blockMenu.getLocation());
 
         if (blockFace == null) {
-            player.sendMessage(Theme.ERROR + "该方块没有指定朝向");
+            player.sendMessage(Networks.getLanguageManager().getPlayerMessage(
+                "configurator.no-direction",
+                Theme.WARNING
+            ));
             return;
         }
 
@@ -81,7 +90,7 @@ public class NetworkConfigurator extends SlimefunItem {
             for (int slot : directional.getItemSlots()) {
                 final ItemStack possibleStack = blockMenu.getItemInSlot(slot);
                 if (possibleStack != null) {
-                    itemStacks[i] = StackUtils.getAsQuantity(blockMenu.getItemInSlot(slot), 1);
+                    itemStacks[i] = GeneralItemStackUtils.getAsQuantity(blockMenu.getItemInSlot(slot), 1);
                 }
                 i++;
             }
@@ -92,7 +101,10 @@ public class NetworkConfigurator extends SlimefunItem {
 
         DataTypeMethods.setCustom(itemMeta, FACE, DataType.STRING, blockFace.name());
         itemStack.setItemMeta(itemMeta);
-        player.sendMessage(Theme.SUCCESS + "已复制设置");
+        player.sendMessage(Networks.getLanguageManager().getPlayerMessage(
+            "configurator.copied",
+            Theme.SUCCESS
+        ));
     }
 
     private void applyConfig(@Nonnull NetworkDirectional directional, @Nonnull ItemStack itemStack, @Nonnull BlockMenu blockMenu, @Nonnull Player player) {
@@ -101,12 +113,19 @@ public class NetworkConfigurator extends SlimefunItem {
         final String string = DataTypeMethods.getCustom(itemMeta, FACE, DataType.STRING);
 
         if (string == null) {
-            player.sendMessage(Theme.ERROR + "需要先复制设置");
+            player.sendMessage(Networks.getLanguageManager().getPlayerMessage(
+                "configurator.direction-not-supplied",
+                Theme.WARNING
+            ));
             return;
         }
 
         directional.setDirection(blockMenu, BlockFace.valueOf(string));
-        player.sendMessage(Theme.SUCCESS + "朝向设置已应用");
+        player.sendMessage(Networks.getLanguageManager().getPlayerMessage(
+            "configurator.direction-applied",
+            Theme.SUCCESS
+        ));
+
 
         if (directional.getItemSlots().length > 0) {
             for (int slot : directional.getItemSlots()) {
@@ -125,24 +144,42 @@ public class NetworkConfigurator extends SlimefunItem {
                     boolean worked = false;
                     for (ItemStack stack : player.getInventory()) {
                         if (StackUtils.itemsMatch(stack, templateStack)) {
-                            final ItemStack stackClone = StackUtils.getAsQuantity(stack, 1);
+                            final ItemStack stackClone = GeneralItemStackUtils.getAsQuantity(stack, 1);
                             stack.setAmount(stack.getAmount() - 1);
                             blockMenu.replaceExistingItem(directional.getItemSlots()[i], stackClone);
-                            player.sendMessage(Theme.SUCCESS + "物品 [" + i + "]: " + Theme.PASSIVE + "已添加到过滤器");
+                            player.sendMessage(Networks.getLanguageManager().getPlayerMessage(
+                                "configurator.item-added",
+                                Theme.SUCCESS
+                            ));
                             worked = true;
                             break;
                         }
                     }
                     if (!worked) {
-                        player.sendMessage(Theme.WARNING + "物品 [" + i + "]: " + Theme.PASSIVE + "物品不足，无法设置过滤器");
+                        player.sendMessage(Networks.getLanguageManager().getPlayerMessage(
+                            "configurator.not-enough-items",
+                            Theme.WARNING,
+                            i,
+                            Theme.PASSIVE
+                        ));
                     }
                 } else if (directional instanceof NetworkPusher) {
-                    player.sendMessage(Theme.WARNING + "物品 [" + i + "]: " + Theme.PASSIVE + "配置中没有包含物品");
+                    player.sendMessage(Networks.getLanguageManager().getPlayerMessage(
+                        "configurator.no-item",
+                        Theme.WARNING,
+                        i,
+                        Theme.PASSIVE
+                    ));
                 }
                 i++;
             }
         } else {
-            player.sendMessage(Theme.WARNING + "物品: " + Theme.PASSIVE + "配置中没有包含物品");
+            player.sendMessage(Networks.getLanguageManager().getPlayerMessage(
+                "configurator.no-item",
+                Theme.WARNING,
+                "A",
+                Theme.PASSIVE
+            ));
         }
     }
 }

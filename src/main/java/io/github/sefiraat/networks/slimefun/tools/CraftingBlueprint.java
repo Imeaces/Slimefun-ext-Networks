@@ -1,9 +1,10 @@
 package io.github.sefiraat.networks.slimefun.tools;
 
+import dev.sefiraat.sefilib.string.TextUtils;
+import dev.sefiraat.sefilib.string.Theme;
+import io.github.sefiraat.networks.Networks;
 import io.github.sefiraat.networks.network.stackcaches.BlueprintInstance;
 import io.github.sefiraat.networks.utils.Keys;
-import io.github.sefiraat.networks.utils.StringUtils;
-import io.github.sefiraat.networks.utils.Theme;
 import io.github.sefiraat.networks.utils.datatypes.DataTypeMethods;
 import io.github.sefiraat.networks.utils.datatypes.PersistentCraftingBlueprintType;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
@@ -28,21 +29,27 @@ public class CraftingBlueprint extends UnplaceableBlock {
     @ParametersAreNonnullByDefault
     public static void setBlueprint(ItemStack blueprint, ItemStack[] recipe, ItemStack output) {
         final ItemMeta itemMeta = blueprint.getItemMeta();
-        DataTypeMethods.setCustom(itemMeta, Keys.BLUEPRINT_INSTANCE, PersistentCraftingBlueprintType.TYPE, new BlueprintInstance(recipe, output));
+        final ItemMeta outputMeta = output.getItemMeta();
+        DataTypeMethods.setCustom(
+            itemMeta,
+            Keys.BLUEPRINT_INSTANCE,
+            PersistentCraftingBlueprintType.TYPE,
+            new BlueprintInstance(recipe, output)
+        );
         List<String> lore = new ArrayList<>();
 
-        lore.add(Theme.CLICK_INFO + "已指定配方");
+        lore.add(Networks.getLanguageManager().getString("misc.assigned-recipe", Theme.CLICK_INFO));
 
         for (ItemStack item : recipe) {
             if (item == null) {
-                lore.add(Theme.PASSIVE + "空");
+                lore.add(Networks.getLanguageManager().getString("misc.nothing", Theme.PASSIVE));
                 continue;
             }
             lore.add(Theme.PASSIVE + ChatColor.stripColor(ItemStackHelper.getDisplayName(item)));
         }
 
         lore.add("");
-        lore.add(Theme.CLICK_INFO + "输出物品");
+        lore.add(Networks.getLanguageManager().getString("misc.outputting", Theme.CLICK_INFO));
 
         lore.add(Theme.PASSIVE + ChatColor.stripColor(ItemStackHelper.getDisplayName(output)));
 

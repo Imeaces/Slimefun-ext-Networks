@@ -1,5 +1,6 @@
 package io.github.sefiraat.networks.slimefun;
 
+import dev.sefiraat.sefilib.itemstacks.GeneralItemStackUtils;
 import io.github.sefiraat.networks.Networks;
 import io.github.sefiraat.networks.slimefun.network.NetworkAutoCrafter;
 import io.github.sefiraat.networks.slimefun.network.NetworkBridge;
@@ -31,7 +32,6 @@ import io.github.sefiraat.networks.slimefun.tools.NetworkProbe;
 import io.github.sefiraat.networks.slimefun.tools.NetworkRake;
 import io.github.sefiraat.networks.slimefun.tools.NetworkRemote;
 import io.github.sefiraat.networks.slimefun.tools.NetworkWirelessConfigurator;
-import io.github.sefiraat.networks.utils.StackUtils;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import io.github.thebusybiscuit.slimefun4.implementation.items.blocks.UnplaceableBlock;
@@ -117,7 +117,7 @@ public class NetworkSlimefunItems {
                 SlimefunItems.SYNTHETIC_EMERALD, null, null,
                 null, null, null
             },
-            StackUtils.getAsQuantity(NetworksSlimefunItemStacks.SYNTHETIC_EMERALD_SHARD, 3)
+            GeneralItemStackUtils.getAsQuantity(NetworksSlimefunItemStacks.SYNTHETIC_EMERALD_SHARD, 3)
         );
 
         OPTIC_GLASS = new UnplaceableBlock(
@@ -129,7 +129,7 @@ public class NetworkSlimefunItems {
                 glass, SYNTHETIC_EMERALD_SHARD.getItem(), glass,
                 glass, glass, glass
             },
-            StackUtils.getAsQuantity(NetworksSlimefunItemStacks.OPTIC_GLASS, 8)
+            GeneralItemStackUtils.getAsQuantity(NetworksSlimefunItemStacks.OPTIC_GLASS, 8)
         );
 
         OPTIC_CABLE = new UnplaceableBlock(
@@ -141,7 +141,7 @@ public class NetworkSlimefunItems {
                 SlimefunItems.COPPER_WIRE, SYNTHETIC_EMERALD_SHARD.getItem(), SlimefunItems.COPPER_WIRE,
                 OPTIC_GLASS.getItem(), OPTIC_GLASS.getItem(), OPTIC_GLASS.getItem()
             },
-            StackUtils.getAsQuantity(NetworksSlimefunItemStacks.OPTIC_CABLE, 16)
+            GeneralItemStackUtils.getAsQuantity(NetworksSlimefunItemStacks.OPTIC_CABLE, 16)
         );
 
         OPTIC_STAR = new UnplaceableBlock(
@@ -184,7 +184,7 @@ public class NetworkSlimefunItems {
             new ItemStack[]{
                 SHRINKING_BASE.getItem(), SlimefunItems.PROGRAMMABLE_ANDROID
             },
-            StackUtils.getAsQuantity(NetworksSlimefunItemStacks.SIMPLE_NANOBOTS, 4)
+            GeneralItemStackUtils.getAsQuantity(NetworksSlimefunItemStacks.SIMPLE_NANOBOTS, 4)
         );
 
         ADVANCED_NANOBOTS = new UnplaceableBlock(
@@ -194,7 +194,7 @@ public class NetworkSlimefunItems {
             new ItemStack[]{
                 SHRINKING_BASE.getItem(), SlimefunItems.PROGRAMMABLE_ANDROID_3
             },
-            StackUtils.getAsQuantity(NetworksSlimefunItemStacks.ADVANCED_NANOBOTS, 4)
+            GeneralItemStackUtils.getAsQuantity(NetworksSlimefunItemStacks.ADVANCED_NANOBOTS, 4)
         );
 
         AI_CORE = new UnplaceableBlock(
@@ -261,7 +261,7 @@ public class NetworkSlimefunItems {
                 OPTIC_CABLE.getItem(), SlimefunItems.CARGO_CONNECTOR_NODE, OPTIC_CABLE.getItem(),
                 OPTIC_GLASS.getItem(), OPTIC_CABLE.getItem(), OPTIC_GLASS.getItem(),
             },
-            StackUtils.getAsQuantity(NetworksSlimefunItemStacks.NETWORK_BRIDGE, 8)
+            GeneralItemStackUtils.getAsQuantity(NetworksSlimefunItemStacks.NETWORK_BRIDGE, 8)
         );
 
         NETWORK_MONITOR = new NetworkMonitor(

@@ -1,11 +1,16 @@
 package io.github.sefiraat.networks.slimefun;
 
+import dev.sefiraat.sefilib.itemstacks.ItemStackGenerators;
+import dev.sefiraat.sefilib.string.Theme;
+import io.github.sefiraat.networks.Networks;
 import io.github.sefiraat.networks.slimefun.network.NetworkQuantumStorage;
 import io.github.sefiraat.networks.slimefun.tools.NetworkRemote;
-import io.github.sefiraat.networks.utils.Theme;
+import io.github.sefiraat.networks.utils.Themes;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
+import io.github.thebusybiscuit.slimefun4.implementation.items.LimitedUseItem;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.collections.Pair;
 import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
+import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
 import lombok.experimental.UtilityClass;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -67,7 +72,6 @@ public class NetworksSlimefunItemStacks {
     public static final SlimefunItemStack NETWORK_CAPACITOR_1;
     public static final SlimefunItemStack NETWORK_CAPACITOR_2;
     public static final SlimefunItemStack NETWORK_CAPACITOR_3;
-    public static final SlimefunItemStack NETWORK_CAPACITOR_4;
     public static final SlimefunItemStack NETWORK_POWER_OUTLET_1;
     public static final SlimefunItemStack NETWORK_POWER_OUTLET_2;
     public static final SlimefunItemStack NETWORK_POWER_DISPLAY;
@@ -91,640 +95,488 @@ public class NetworksSlimefunItemStacks {
 
     static {
 
-        SYNTHETIC_EMERALD_SHARD = Theme.themedSlimefunItemStack(
+        SYNTHETIC_EMERALD_SHARD = Networks.getLanguageManager().getThemedStack(
             "NTW_SYNTHETIC_EMERALD_SHARD",
             new ItemStack(Material.LIME_DYE),
-            Theme.CRAFTING,
-            "人造绿宝石碎片",
-            "一块人造绿宝石的碎片",
-            "是信息传输的支柱"
+            Themes.CRAFTING,
+            "synthetic-emerald-shard"
         );
 
-        OPTIC_GLASS = Theme.themedSlimefunItemStack(
+        OPTIC_GLASS = Networks.getLanguageManager().getThemedStack(
             "NTW_OPTIC_GLASS",
             new ItemStack(Material.GLASS),
-            Theme.CRAFTING,
-            "光学玻璃",
-            "能够传输少量信息的玻璃"
+            Themes.CRAFTING,
+            "optic-glass"
         );
 
-        OPTIC_CABLE = Theme.themedSlimefunItemStack(
+        OPTIC_CABLE = Networks.getLanguageManager().getThemedStack(
             "NTW_OPTIC_CABLE",
             new ItemStack(Material.STRING),
-            Theme.CRAFTING,
-            "光缆",
-            "能够传输大量信息的光缆"
+            Themes.CRAFTING,
+            "optic-cable"
         );
 
-        OPTIC_STAR = Theme.themedSlimefunItemStack(
+        OPTIC_STAR = Networks.getLanguageManager().getThemedStack(
             "NTW_OPTIC_STAR",
             new ItemStack(Material.NETHER_STAR),
-            Theme.CRAFTING,
-            "光学之星",
-            "能够传输大量信息的星"
+            Themes.CRAFTING,
+            "optic-star"
         );
 
-        RADIOACTIVE_OPTIC_STAR = Theme.themedSlimefunItemStack(
+        RADIOACTIVE_OPTIC_STAR = Networks.getLanguageManager().getThemedStack(
             "NTW_RADIOACTIVE_OPTIC_STAR",
-            getPreEnchantedItemStack(Material.NETHER_STAR, true, new Pair<>(Enchantment.ARROW_DAMAGE, 1)),
-            Theme.CRAFTING,
-            "放射性光学之星",
-            "能够传输几乎无限信息的星"
+            ItemStackGenerators.createEnchantedItemStack(
+                Material.NETHER_STAR,
+                true,
+                new Pair<>(Enchantment.ARROW_DAMAGE, 1)
+            ),
+            Themes.CRAFTING,
+            "radioactive-optic-star"
         );
 
-        SHRINKING_BASE = Theme.themedSlimefunItemStack(
+        SHRINKING_BASE = Networks.getLanguageManager().getThemedStack(
             "NTW_SHRINKING_BASE",
-            getPreEnchantedItemStack(Material.PISTON, true, new Pair<>(Enchantment.ARROW_DAMAGE, 1)),
-            Theme.CRAFTING,
-            "缩小底座",
-            "可以让大型物体变小的装置"
+            ItemStackGenerators.createEnchantedItemStack(
+                Material.PISTON,
+                true,
+                new Pair<>(Enchantment.ARROW_DAMAGE, 1)
+            ),
+            Themes.CRAFTING,
+            "shrinking-base"
         );
 
-        SIMPLE_NANOBOTS = Theme.themedSlimefunItemStack(
+        SIMPLE_NANOBOTS = Networks.getLanguageManager().getThemedStack(
             "NTW_SIMPLE_NANOBOTS",
             new ItemStack(Material.MELON_SEEDS),
-            Theme.CRAFTING,
-            "简易纳米机器人",
-            "可以帮助你完成精密任务的微型机器人"
+            Themes.CRAFTING,
+            "simple-nanobots"
         );
 
-        ADVANCED_NANOBOTS = Theme.themedSlimefunItemStack(
+        ADVANCED_NANOBOTS = Networks.getLanguageManager().getThemedStack(
             "NTW_ADVANCED_NANOBOTS",
-            getPreEnchantedItemStack(Material.MELON_SEEDS, true, new Pair<>(Enchantment.ARROW_DAMAGE, 1)),
-            Theme.CRAFTING,
-            "高级纳米机器人",
-            "可以帮助你完成精密任务的微型机器人",
-            "比简易版更智能，更高效"
+            ItemStackGenerators.createEnchantedItemStack(
+                Material.MELON_SEEDS,
+                true,
+                new Pair<>(Enchantment.ARROW_DAMAGE, 1)
+            ),
+            Themes.CRAFTING,
+            "advanced-nanobots"
         );
 
-        AI_CORE = Theme.themedSlimefunItemStack(
+        AI_CORE = Networks.getLanguageManager().getThemedStack(
             "NTW_AI_CORE",
             new ItemStack(Material.BRAIN_CORAL_BLOCK),
-            Theme.CRAFTING,
-            "人工智能核心",
-            "在脆弱外壳中的初代人工智能"
+            Themes.CRAFTING,
+            "ai-core"
         );
 
-        EMPOWERED_AI_CORE = Theme.themedSlimefunItemStack(
+        EMPOWERED_AI_CORE = Networks.getLanguageManager().getThemedStack(
             "NTW_EMPOWERED_AI_CORE",
             new ItemStack(Material.TUBE_CORAL_BLOCK),
-            Theme.CRAFTING,
-            "充能人工智能核心",
-            "在外壳中的高级人工智能"
+            Themes.CRAFTING,
+            "empowered-ai-core"
         );
 
-        PRISTINE_AI_CORE = Theme.themedSlimefunItemStack(
+        PRISTINE_AI_CORE = Networks.getLanguageManager().getThemedStack(
             "NTW_PRISTINE_AI_CORE",
-            getPreEnchantedItemStack(Material.TUBE_CORAL_BLOCK, true, new Pair<>(Enchantment.ARROW_DAMAGE, 1)),
-            Theme.CRAFTING,
-            "古代人工智能核心",
-            "据说是从上古遗迹中挖掘出来的",
-            "完美级人工智能"
+            ItemStackGenerators.createEnchantedItemStack(
+                Material.TUBE_CORAL_BLOCK,
+                true,
+                new Pair<>(Enchantment.ARROW_DAMAGE, 1)
+            ),
+            Themes.CRAFTING,
+            "pristine-ai-core"
         );
 
-        INTERDIMENSIONAL_PRESENCE = Theme.themedSlimefunItemStack(
+        INTERDIMENSIONAL_PRESENCE = Networks.getLanguageManager().getThemedStack(
             "NTW_INTERDIMENSIONAL_PRESENCE",
-            getPreEnchantedItemStack(Material.ARMOR_STAND, true, new Pair<>(Enchantment.ARROW_DAMAGE, 1)),
-            Theme.CRAFTING,
-            "跨跃维度的存在",
-            "这种完美级的人工智能",
-            "甚至还掌握了跨越维度的能力"
+            ItemStackGenerators.createEnchantedItemStack(
+                Material.ARMOR_STAND,
+                true,
+                new Pair<>(Enchantment.ARROW_DAMAGE, 1)
+            ),
+            Themes.CRAFTING,
+            "interdimensional-presence"
         );
 
-        NETWORK_CONTROLLER = Theme.themedSlimefunItemStack(
+        NETWORK_CONTROLLER = Networks.getLanguageManager().getThemedStack(
             "NTW_CONTROLLER",
             new ItemStack(Material.BLACK_STAINED_GLASS),
-            Theme.MACHINE,
-            "网络控制器",
-            "网络控制器是网络的核心部分",
-            "每个网络最多有1个控制器"
+            Themes.MACHINE,
+            "network-controller"
         );
 
-        NETWORK_BRIDGE = Theme.themedSlimefunItemStack(
+        NETWORK_BRIDGE = Networks.getLanguageManager().getThemedStack(
             "NTW_BRIDGE",
             new ItemStack(Material.WHITE_STAINED_GLASS),
-            Theme.MACHINE,
-            "网桥",
-            "网桥用于连接不同的网络物品",
-            "来形成一个完整的网络"
+            Themes.MACHINE,
+            "network-bridge"
         );
 
-        NETWORK_MONITOR = Theme.themedSlimefunItemStack(
+        NETWORK_MONITOR = Networks.getLanguageManager().getThemedStack(
             "NTW_MONITOR",
             new ItemStack(Material.GREEN_STAINED_GLASS),
-            Theme.MACHINE,
-            "网络监视器",
-            "网络监视器可以与附近的方块交互",
-            "让指定方块可以接入网络",
-            "",
-            "目前支持:",
-            "无尽科技 - 存储单元",
-            "网络 - 量子存储"
+            Themes.MACHINE,
+            "network-monitor"
         );
 
-        NETWORK_IMPORT = Theme.themedSlimefunItemStack(
+        NETWORK_IMPORT = Networks.getLanguageManager().getThemedStack(
             "NTW_IMPORT",
             new ItemStack(Material.RED_STAINED_GLASS),
-            Theme.MACHINE,
-            "网络入口",
-            "网络入口会将其中的物品送入网络中",
-            "每个SF tick可传输最多9组物品",
-            "可接收来自货运网络的物品"
+            Themes.MACHINE,
+            "network-importer"
         );
 
-        NETWORK_EXPORT = Theme.themedSlimefunItemStack(
+        NETWORK_EXPORT = Networks.getLanguageManager().getThemedStack(
             "NTW_EXPORT",
             new ItemStack(Material.BLUE_STAINED_GLASS),
-            Theme.MACHINE,
-            "网络出口",
-            "网络出口可以设置成",
-            "持续将1组指定的物品送出网络",
-            "可以使用货运网络从中提取物品"
+            Themes.MACHINE,
+            "network-exporter"
         );
 
-        NETWORK_GRABBER = Theme.themedSlimefunItemStack(
+        NETWORK_GRABBER = Networks.getLanguageManager().getThemedStack(
             "NTW_GRABBER",
             new ItemStack(Material.MAGENTA_STAINED_GLASS),
-            Theme.MACHINE,
-            "网络抓取器",
-            "网络抓取器会尝试从",
-            "指定的机器中抓取第一个物品"
+            Themes.MACHINE,
+            "network-grabber"
         );
 
-        NETWORK_PUSHER = Theme.themedSlimefunItemStack(
+        NETWORK_PUSHER = Networks.getLanguageManager().getThemedStack(
             "NTW_PUSHER",
             new ItemStack(Material.BROWN_STAINED_GLASS),
-            Theme.MACHINE,
-            "网络推送器",
-            "网络推送器会尝试将",
-            "指定的物品送入机器中"
+            Themes.MACHINE,
+            "network-pusher"
         );
 
-        NETWORK_VANILLA_GRABBER = Theme.themedSlimefunItemStack(
+        NETWORK_VANILLA_GRABBER = Networks.getLanguageManager().getThemedStack(
             "NTW_VANILLA_GRABBER",
             new ItemStack(Material.ORANGE_STAINED_GLASS),
-            Theme.MACHINE,
-            "网络原版容器抓取器",
-            "网络原版容器抓取器会尝试",
-            "抓取指定原版容器中的第一个物品.",
-            "",
-            "该机器不能与网络直接交互,",
-            "你还需要一个网络抓取器",
-            "将本机器中的物品输入到网络中."
+            Themes.MACHINE,
+            "network-vanilla-grabber"
         );
 
-        NETWORK_VANILLA_PUSHER = Theme.themedSlimefunItemStack(
+        NETWORK_VANILLA_PUSHER = Networks.getLanguageManager().getThemedStack(
             "NTW_VANILLA_PUSHER",
             new ItemStack(Material.LIME_STAINED_GLASS),
-            Theme.MACHINE,
-            "网络原版容器推送器",
-            "网络原版容器推送器会尝试",
-            "推送其中的物品到指定原版容器中.",
-            "",
-            "该机器不能与网络直接交互,",
-            "你还需要一个网络推送器",
-            "将网络中的物品推送到本机器中."
+            Themes.MACHINE,
+            "network-vanilla-pusher"
         );
 
-        NETWORK_WIRELESS_TRANSMITTER = Theme.themedSlimefunItemStack(
+        NETWORK_WIRELESS_TRANSMITTER = Networks.getLanguageManager().getThemedStack(
             "NTW_NETWORK_WIRELESS_TRANSMITTER",
             new ItemStack(Material.CYAN_STAINED_GLASS),
-            Theme.MACHINE,
-            "网络无线发射器",
-            "网络无线发射器可以",
-            "将其中的物品传输到绑定的",
-            "网络无线接收器中(只能在同一世界).",
-            "使用网络无线配置器来进行绑定.",
-            "每次传输会消耗 7,500 J 网络电力."
+            Themes.MACHINE,
+            "network-wireless-transmitter"
         );
 
-        NETWORK_WIRELESS_RECEIVER = Theme.themedSlimefunItemStack(
+        NETWORK_WIRELESS_RECEIVER = Networks.getLanguageManager().getThemedStack(
             "NTW_NETWORK_WIRELESS_RECEIVER",
             new ItemStack(Material.PURPLE_STAINED_GLASS),
-            Theme.MACHINE,
-            "网络无线接收器",
-            "网络无线接收器可以",
-            "接收来自绑定的网络无线发射器",
-            "中的物品(只能在同一世界).",
-            "每粘液刻会把接收到的物品",
-            "尝试推送到网络中."
+            Themes.MACHINE,
+            "network-wireless-receiver"
         );
 
-        NETWORK_PURGER = Theme.themedSlimefunItemStack(
+        NETWORK_PURGER = Networks.getLanguageManager().getThemedStack(
             "NTW_TRASH",
             new ItemStack(Material.OBSERVER),
-            Theme.MACHINE,
-            "网络清除器",
-            "网络清除器会从网络中",
-            "不断地移除指定物品",
-            "清除的物品会立即消失，谨慎使用!"
+            Themes.MACHINE,
+            "network-purger"
         );
 
-        NETWORK_GRID = Theme.themedSlimefunItemStack(
+        NETWORK_GRID = Networks.getLanguageManager().getThemedStack(
             "NTW_GRID",
             new ItemStack(Material.NOTE_BLOCK),
-            Theme.MACHINE,
-            "网格",
-            "网格允许你查看网络中所有的物品",
-            "你也可以直接放入或取出物品"
+            Themes.MACHINE,
+            "network-grid"
         );
 
-        NETWORK_CRAFTING_GRID = Theme.themedSlimefunItemStack(
+        NETWORK_CRAFTING_GRID = Networks.getLanguageManager().getThemedStack(
             "NTW_CRAFTING_GRID",
             new ItemStack(Material.REDSTONE_LAMP),
-            Theme.MACHINE,
-            "网格(带合成)",
-            "这种网格与普通网格类似",
-            "但会显示更少的物品",
-            "不过你可以直接使用网络中的物品",
-            "进行合成"
+            Themes.MACHINE,
+            "network-crafting-grid"
         );
 
-        NETWORK_CELL = Theme.themedSlimefunItemStack(
+        NETWORK_CELL = Networks.getLanguageManager().getThemedStack(
             "NTW_CELL",
             new ItemStack(Material.HONEYCOMB_BLOCK),
-            Theme.MACHINE,
-            "网络单元",
-            "网络单元拥有54格空间(相当于一个大箱子)",
-            "可以通过网络访问其中的物品",
-            "也可以直接打开"
+            Themes.MACHINE,
+            "network-cell"
         );
 
-        NETWORK_GREEDY_BLOCK = Theme.themedSlimefunItemStack(
+        NETWORK_GREEDY_BLOCK = Networks.getLanguageManager().getThemedStack(
             "NTW_GREEDY_BLOCK",
             new ItemStack(Material.SHROOMLIGHT),
-            Theme.MACHINE,
-            "网络阻断器",
-            "网络阻断器可以设置一个物品,",
-            "然后会从网络各处输入中",
-            "收集指定的物品,最多为1组.",
-            "收集满后,会阻断该物品在网络中的传输,",
-            "任何其他网络方块都不会收到该物品."
+            Themes.MACHINE,
+            "network-greedy-block"
         );
 
-        NETWORK_QUANTUM_WORKBENCH = Theme.themedSlimefunItemStack(
+        NETWORK_QUANTUM_WORKBENCH = Networks.getLanguageManager().getThemedStack(
             "NTW_QUANTUM_WORKBENCH",
             new ItemStack(Material.DRIED_KELP_BLOCK),
-            Theme.MACHINE,
-            "网络量子工作台",
-            "可以合成量子存储"
+            Themes.MACHINE,
+            "network-quantum-workbench"
         );
 
-        NETWORK_QUANTUM_STORAGE_1 = Theme.themedSlimefunItemStack(
+
+        NETWORK_QUANTUM_STORAGE_1 = Networks.getLanguageManager().getThemedStack(
             "NTW_QUANTUM_STORAGE_1",
             new ItemStack(Material.WHITE_TERRACOTTA),
-            Theme.MACHINE,
-            "网络量子存储 (4K)",
-            "可存储 " + NetworkQuantumStorage.getSizes()[0] + " 个物品",
-            "",
-            "在量子奇点中存储大量物品"
+            Themes.MACHINE,
+            "network-quantum-storage-1",
+            String.valueOf(NetworkQuantumStorage.getSizes()[0])
         );
 
-        NETWORK_QUANTUM_STORAGE_2 = Theme.themedSlimefunItemStack(
+        NETWORK_QUANTUM_STORAGE_2 = Networks.getLanguageManager().getThemedStack(
             "NTW_QUANTUM_STORAGE_2",
             new ItemStack(Material.LIGHT_GRAY_TERRACOTTA),
-            Theme.MACHINE,
-            "网络量子存储 (32K)",
-            "可存储 " + NetworkQuantumStorage.getSizes()[1] + " 个物品",
-            "",
-            "在量子奇点中存储大量物品"
+            Themes.MACHINE,
+            "network-quantum-storage-2",
+            String.valueOf(NetworkQuantumStorage.getSizes()[1])
         );
 
-        NETWORK_QUANTUM_STORAGE_3 = Theme.themedSlimefunItemStack(
+        NETWORK_QUANTUM_STORAGE_3 = Networks.getLanguageManager().getThemedStack(
             "NTW_QUANTUM_STORAGE_3",
             new ItemStack(Material.GRAY_TERRACOTTA),
-            Theme.MACHINE,
-            "网络量子存储 (262K)",
-            "可存储 " + NetworkQuantumStorage.getSizes()[2] + " 个物品",
-            "",
-            "在量子奇点中存储大量物品"
+            Themes.MACHINE,
+            "network-quantum-storage-3",
+            String.valueOf(NetworkQuantumStorage.getSizes()[2])
         );
 
-        NETWORK_QUANTUM_STORAGE_4 = Theme.themedSlimefunItemStack(
+        NETWORK_QUANTUM_STORAGE_4 = Networks.getLanguageManager().getThemedStack(
             "NTW_QUANTUM_STORAGE_4",
             new ItemStack(Material.BROWN_TERRACOTTA),
-            Theme.MACHINE,
-            "网络量子存储 (2M)",
-            "可存储 " + NetworkQuantumStorage.getSizes()[3] + " 个物品",
-            "",
-            "在量子奇点中存储大量物品"
+            Themes.MACHINE,
+            "network-quantum-storage-4",
+            String.valueOf(NetworkQuantumStorage.getSizes()[3])
         );
 
-        NETWORK_QUANTUM_STORAGE_5 = Theme.themedSlimefunItemStack(
+        NETWORK_QUANTUM_STORAGE_5 = Networks.getLanguageManager().getThemedStack(
             "NTW_QUANTUM_STORAGE_5",
             new ItemStack(Material.BLACK_TERRACOTTA),
-            Theme.MACHINE,
-            "网络量子存储 (16M)",
-            "可存储 " + NetworkQuantumStorage.getSizes()[4] + " 个物品",
-            "",
-            "在量子奇点中存储大量物品"
+            Themes.MACHINE,
+            "network-quantum-storage-5",
+            String.valueOf(NetworkQuantumStorage.getSizes()[4])
         );
 
-        NETWORK_QUANTUM_STORAGE_6 = Theme.themedSlimefunItemStack(
+        NETWORK_QUANTUM_STORAGE_6 = Networks.getLanguageManager().getThemedStack(
             "NTW_QUANTUM_STORAGE_6",
             new ItemStack(Material.PURPLE_TERRACOTTA),
-            Theme.MACHINE,
-            "网络量子存储 (134M)",
-            "可存储 " + NetworkQuantumStorage.getSizes()[5] + " 个物品",
-            "",
-            "在量子奇点中存储大量物品"
+            Themes.MACHINE,
+            "network-quantum-storage-6",
+            String.valueOf(NetworkQuantumStorage.getSizes()[5])
         );
 
-        NETWORK_QUANTUM_STORAGE_7 = Theme.themedSlimefunItemStack(
+        NETWORK_QUANTUM_STORAGE_7 = Networks.getLanguageManager().getThemedStack(
             "NTW_QUANTUM_STORAGE_7",
             new ItemStack(Material.MAGENTA_TERRACOTTA),
-            Theme.MACHINE,
-            "网络量子存储 (1B)",
-            "可存储 " + NetworkQuantumStorage.getSizes()[6] + " 个物品",
-            "",
-            "在量子奇点中存储大量物品"
+            Themes.MACHINE,
+            "network-quantum-storage-7",
+            String.valueOf(NetworkQuantumStorage.getSizes()[6])
         );
 
-        NETWORK_QUANTUM_STORAGE_8 = Theme.themedSlimefunItemStack(
+        NETWORK_QUANTUM_STORAGE_8 = Networks.getLanguageManager().getThemedStack(
             "NTW_QUANTUM_STORAGE_8",
             new ItemStack(Material.RED_TERRACOTTA),
-            Theme.MACHINE,
-            "网络量子存储 (∞)",
-            "可存储几乎无限多个物品",
-            "",
-            "在量子奇点中存储大量物品"
+            Themes.MACHINE,
+            "network-quantum-storage-8",
+            String.valueOf(NetworkQuantumStorage.getSizes()[7])
         );
 
-        NETWORK_CAPACITOR_1 = Theme.themedSlimefunItemStack(
+        NETWORK_CAPACITOR_1 = Networks.getLanguageManager().getThemedStack(
             "NTW_CAPACITOR_1",
             new ItemStack(Material.BROWN_GLAZED_TERRACOTTA),
-            Theme.MACHINE,
-            "网络电容 (1)",
-            "网络电容可以接收来自",
-            "能源网络的电力并存储起来",
-            "以供其他网络设备使用",
-            "",
-            MessageFormat.format("{0}容量: {1}{2}", Theme.CLICK_INFO, Theme.PASSIVE, 1000)
+            Themes.MACHINE,
+            "network-capacitor-1",
+            Theme.CLICK_INFO,
+            Theme.PASSIVE,
+            1000
         );
 
-        NETWORK_CAPACITOR_2 = Theme.themedSlimefunItemStack(
+        NETWORK_CAPACITOR_2 = Networks.getLanguageManager().getThemedStack(
             "NTW_CAPACITOR_2",
             new ItemStack(Material.GREEN_GLAZED_TERRACOTTA),
-            Theme.MACHINE,
-            "网络电容 (2)",
-            "网络电容可以接收来自",
-            "能源网络的电力并存储起来",
-            "以供其他网络设备使用",
-            "",
-            MessageFormat.format("{0}容量: {1}{2}", Theme.CLICK_INFO, Theme.PASSIVE, 10000)
+            Themes.MACHINE,
+            "network-capacitor-2",
+            Theme.CLICK_INFO,
+            Theme.PASSIVE,
+            10000
         );
 
-        NETWORK_CAPACITOR_3 = Theme.themedSlimefunItemStack(
+        NETWORK_CAPACITOR_3 = Networks.getLanguageManager().getThemedStack(
             "NTW_CAPACITOR_3",
             new ItemStack(Material.BLACK_GLAZED_TERRACOTTA),
-            Theme.MACHINE,
-            "网络电容 (3)",
-            "网络电容可以接收来自",
-            "能源网络的电力并存储起来",
-            "以供其他网络设备使用",
-            "",
-            MessageFormat.format("{0}容量: {1}{2}", Theme.CLICK_INFO, Theme.PASSIVE, 100000)
+            Themes.MACHINE,
+            "network-capacitor-3",
+            Theme.CLICK_INFO,
+            Theme.PASSIVE,
+            1000000
         );
 
-        NETWORK_CAPACITOR_4 = Theme.themedSlimefunItemStack(
-            "NTW_CAPACITOR_4",
-            new ItemStack(Material.GRAY_GLAZED_TERRACOTTA),
-            Theme.MACHINE,
-            "网络电容 (4)",
-            "网络电容可以接收来自",
-            "能源网络的电力并存储起来",
-            "以供其他网络设备使用",
-            "",
-            MessageFormat.format("{0}容量: {1}{2}", Theme.CLICK_INFO, Theme.PASSIVE, 1000000)
-        );
-
-        NETWORK_POWER_OUTLET_1 = Theme.themedSlimefunItemStack(
+        NETWORK_POWER_OUTLET_1 = Networks.getLanguageManager().getThemedStack(
             "NTW_POWER_OUTLET_1",
             new ItemStack(Material.YELLOW_GLAZED_TERRACOTTA),
-            Theme.MACHINE,
-            "网络插口 (1)",
-            "网络插口可以将网络中存储的电力",
-            "传输回电力网络中.",
-            "将网络插口理解为发电机.",
-            "",
-            "会有 20% 的损耗.",
-            "",
-            MessageFormat.format("{0}可存储: {1}{2}J", Theme.CLICK_INFO, Theme.PASSIVE, 500)
+            Themes.MACHINE,
+            "network-power-outlet-1",
+            Theme.CLICK_INFO,
+            Theme.PASSIVE,
+            500
         );
 
-        NETWORK_POWER_OUTLET_2 = Theme.themedSlimefunItemStack(
+        NETWORK_POWER_OUTLET_2 = Networks.getLanguageManager().getThemedStack(
             "NTW_POWER_OUTLET_2",
             new ItemStack(Material.RED_GLAZED_TERRACOTTA),
-            Theme.MACHINE,
-            "网络插口 (2)",
-            "网络插口可以将网络中存储的电力",
-            "传输回电力网络中.",
-            "将网络插口理解为发电机.",
-            "",
-            "会有 20% 的损耗.",
-            "",
-            MessageFormat.format("{0}可存储: {1}{2}J", Theme.CLICK_INFO, Theme.PASSIVE, 2000)
+            Themes.MACHINE,
+            "network-power-outlet-2",
+            Theme.CLICK_INFO,
+            Theme.PASSIVE,
+            2000
         );
 
-        NETWORK_POWER_DISPLAY = Theme.themedSlimefunItemStack(
+        NETWORK_POWER_DISPLAY = Networks.getLanguageManager().getThemedStack(
             "NTW_POWER_DISPLAY",
             new ItemStack(Material.TINTED_GLASS),
-            Theme.MACHINE,
-            "网络电表",
-            "网络电表会显示网络中的电力情况",
-            "很简单, 对吧?"
+            Themes.MACHINE,
+            "network-power-display"
         );
 
-        NETWORK_RECIPE_ENCODER = Theme.themedSlimefunItemStack(
+        NETWORK_RECIPE_ENCODER = Networks.getLanguageManager().getThemedStack(
             "NTW_RECIPE_ENCODER",
             new ItemStack(Material.TARGET),
-            Theme.MACHINE,
-            "网络配方编码器",
-            "可以根据输入的物品来制作合成蓝图",
-            "",
-            MessageFormat.format("{0}网络电力消耗: {1}{2} 每次编码", Theme.CLICK_INFO, Theme.PASSIVE, 20000)
+            Themes.MACHINE,
+            "network-recipe-encoder",
+            Theme.CLICK_INFO,
+            Theme.PASSIVE,
+            20000
         );
 
-        NETWORK_AUTO_CRAFTER = Theme.themedSlimefunItemStack(
+        NETWORK_AUTO_CRAFTER = Networks.getLanguageManager().getThemedStack(
             "NTW_AUTO_CRAFTER",
             new ItemStack(Material.BLACK_GLAZED_TERRACOTTA),
-            Theme.MACHINE,
-            "网络自动合成机",
-            "网络自动合成机需要合成蓝图才能工作。",
-            "当网络中没有蓝图的目标物品时，",
-            "机器会自动从网络中选取材料进行合成",
-            "(需要网络中有足够的原材料)",
-            "",
-            MessageFormat.format("{0}网络电力消耗: {1}{2} 每次合成", Theme.CLICK_INFO, Theme.PASSIVE, 64)
+            Themes.MACHINE,
+            "network-auto-crafter",
+            Theme.CLICK_INFO,
+            Theme.PASSIVE,
+            64
         );
 
-        NETWORK_AUTO_CRAFTER_WITHHOLDING = Theme.themedSlimefunItemStack(
+        NETWORK_AUTO_CRAFTER_WITHHOLDING = Networks.getLanguageManager().getThemedStack(
             "NTW_AUTO_CRAFTER_WITHHOLDING",
             new ItemStack(Material.WHITE_GLAZED_TERRACOTTA),
-            Theme.MACHINE,
-            "网络自动合成机 (预留版)",
-            "网络自动合成机需要合成蓝图才能工作。",
-            "当网络中没有蓝图的目标物品时，",
-            "机器会自动从网络中选取材料进行合成",
-            "(需要网络中有足够的原材料)",
-            "",
-            "预留版的自动合成机会不断进行合成",
-            "直到输出栏拥有1组物品",
-            "这一组物品可以在网络中访问",
-            "也可以通过货运系统取出",
-            "",
-            MessageFormat.format("{0}网络电力消耗: {1}{2} 每次合成", Theme.CLICK_INFO, Theme.PASSIVE, 128)
+            Themes.MACHINE,
+            "network-auto-crafter-withholding",
+            Theme.CLICK_INFO,
+            Theme.PASSIVE,
+            128
         );
 
-        CRAFTING_BLUEPRINT = Theme.themedSlimefunItemStack(
+        CRAFTING_BLUEPRINT = Networks.getLanguageManager().getThemedStack(
             "NTW_CRAFTING_BLUEPRINT",
             new ItemStack(Material.BLUE_DYE),
-            Theme.TOOL,
-            "合成蓝图",
-            "一张空白的蓝图",
-            "可以存储一个合成配方"
+            Themes.TOOL,
+            "crafting-blueprint"
         );
 
-        NETWORK_PROBE = Theme.themedSlimefunItemStack(
+        NETWORK_PROBE = Networks.getLanguageManager().getThemedStack(
             "NTW_PROBE",
             new ItemStack(Material.CLOCK),
-            Theme.TOOL,
-            "网络探测器",
-            "右键点击网络控制器",
-            "可以查看网络中的节点数量"
+            Themes.TOOL,
+            "network-probe"
         );
 
-        NETWORK_REMOTE = Theme.themedSlimefunItemStack(
+        NETWORK_REMOTE = Networks.getLanguageManager().getThemedStack(
             "NTW_REMOTE",
             new ItemStack(Material.PAINTING),
-            Theme.TOOL,
-            "网络远程访问器",
-            "远程打开绑定的网格",
-            "需要加载网格所在区块",
-            "",
-            MessageFormat.format("{0}Shift+右键点击 {1}普通网格以进行绑定", Theme.CLICK_INFO, Theme.PASSIVE),
-            "",
-            MessageFormat.format("{0}范围: {1}{2}格", Theme.CLICK_INFO, Theme.PASSIVE, NetworkRemote.getRanges()[0])
+            Themes.TOOL,
+            "network-remote",
+            Theme.CLICK_INFO,
+            Theme.PASSIVE,
+            NetworkRemote.getRanges()[0]
         );
 
-        NETWORK_REMOTE_EMPOWERED = Theme.themedSlimefunItemStack(
+        NETWORK_REMOTE_EMPOWERED = Networks.getLanguageManager().getThemedStack(
             "NTW_REMOTE_EMPOWERED",
             new ItemStack(Material.ITEM_FRAME),
-            Theme.TOOL,
-            "充能网络远程访问器",
-            "远程打开绑定的网格",
-            "需要加载网格所在区块",
-            "",
-            MessageFormat.format("{0}Shift+右键点击 {1}普通网格以进行绑定", Theme.CLICK_INFO, Theme.PASSIVE),
-            "",
-            MessageFormat.format("{0}范围: {1}{2}格", Theme.CLICK_INFO, Theme.PASSIVE, NetworkRemote.getRanges()[1])
+            Themes.TOOL,
+            "network-remote-empowered",
+            Theme.CLICK_INFO,
+            Theme.PASSIVE,
+            NetworkRemote.getRanges()[1]
         );
 
-        NETWORK_REMOTE_PRISTINE = Theme.themedSlimefunItemStack(
+        NETWORK_REMOTE_PRISTINE = Networks.getLanguageManager().getThemedStack(
             "NTW_REMOTE_PRISTINE",
             new ItemStack(Material.GLOW_ITEM_FRAME),
-            Theme.TOOL,
-            "古代网络远程访问器",
-            "远程打开绑定的网格",
-            "需要加载网格所在区块",
-            "",
-            MessageFormat.format("{0}Shift+右键点击 {1}普通网格以进行绑定", Theme.CLICK_INFO, Theme.PASSIVE),
-            "",
-            MessageFormat.format("{0}范围: {1}{2}", Theme.CLICK_INFO, Theme.PASSIVE, "无限制(仅同一世界)")
+            Themes.TOOL,
+            "network-remote-pristine",
+            Theme.CLICK_INFO,
+            Theme.PASSIVE
         );
 
-        NETWORK_REMOTE_ULTIMATE = Theme.themedSlimefunItemStack(
+        NETWORK_REMOTE_ULTIMATE = Networks.getLanguageManager().getThemedStack(
             "NTW_REMOTE_ULTIMATE",
-            getPreEnchantedItemStack(Material.GLOW_ITEM_FRAME, true, new Pair<>(Enchantment.ARROW_DAMAGE, 1)),
-            Theme.TOOL,
-            "终极网络远程访问器",
-            "远程打开绑定的网格",
-            "需要加载网格所在区块",
-            "",
-            MessageFormat.format("{0}Shift+右键点击 {1}普通网格以进行绑定", Theme.CLICK_INFO, Theme.PASSIVE),
-            "",
-            MessageFormat.format("{0}范围: {1}{2}", Theme.CLICK_INFO, Theme.PASSIVE, "跨维度")
+            ItemStackGenerators.createEnchantedItemStack(
+                Material.GLOW_ITEM_FRAME,
+                true,
+                new Pair<>(Enchantment.ARROW_DAMAGE, 1)
+            ),
+            Themes.TOOL,
+            "network-remote-ultimate",
+            Theme.CLICK_INFO,
+            Theme.PASSIVE
         );
 
-        NETWORK_CRAYON = Theme.themedSlimefunItemStack(
+        NETWORK_CRAYON = Networks.getLanguageManager().getThemedStack(
             "NTW_CRAYON",
             new ItemStack(Material.RED_CANDLE),
-            Theme.TOOL,
-            "网络绘制器",
-            "当对着网络控制器使用时",
-            "可以让该网络中的方块展示出粒子效果"
+            Themes.TOOL,
+            "network-crayon"
         );
 
-        NETWORK_CONFIGURATOR = Theme.themedSlimefunItemStack(
+        NETWORK_CONFIGURATOR = Networks.getLanguageManager().getThemedStack(
             "NTW_CONFIGURATOR",
             new ItemStack(Material.BLAZE_ROD),
-            Theme.TOOL,
-            "网络配置器",
-            "用于复制网络部件的设置",
-            "可复制带方向选择的网络方块的设置",
-            "",
-            MessageFormat.format("{0}右键点击: {1}{2}", Theme.CLICK_INFO, Theme.PASSIVE, "应用设置"),
-            MessageFormat.format("{0}Shift+右键点击: {1}{2}", Theme.CLICK_INFO, Theme.PASSIVE, "存储设置")
+            Themes.TOOL,
+            "network-configurator",
+            Theme.CLICK_INFO,
+            Theme.PASSIVE
         );
 
-        NETWORK_WIRELESS_CONFIGURATOR = Theme.themedSlimefunItemStack(
+        NETWORK_WIRELESS_CONFIGURATOR = Networks.getLanguageManager().getThemedStack(
             "NTW_WIRELESS_CONFIGURATOR",
             new ItemStack(Material.BLAZE_ROD),
-            Theme.TOOL,
-            "网络无线配置器",
-            "用于储存一个接收器的位置,",
-            "并设置到发射器中.",
-            "",
-            MessageFormat.format("{0}右键点击: {1}{2}", Theme.CLICK_INFO, Theme.PASSIVE, "储存接收器的位置"),
-            MessageFormat.format("{0}Shift+右键点击: {1}{2}", Theme.CLICK_INFO, Theme.PASSIVE, "将位置设置到发射器中")
+            Themes.TOOL,
+            "network-wireless-configurator",
+            Theme.CLICK_INFO,
+            Theme.PASSIVE
         );
 
-        NETWORK_RAKE_1 = Theme.themedSlimefunItemStack(
+        NETWORK_RAKE_1 = Networks.getLanguageManager().getThemedStack(
             "NTW_RAKE_1",
             new ItemStack(Material.TWISTING_VINES),
-            Theme.TOOL,
-            "网络扳手 (1)",
-            "右键点击一个网络节点",
-            "可以立即破坏",
-            "",
+            Themes.TOOL,
+            "network-rake-1",
             LoreBuilder.usesLeft(250)
         );
 
-        NETWORK_RAKE_2 = Theme.themedSlimefunItemStack(
+        NETWORK_RAKE_2 = Networks.getLanguageManager().getThemedStack(
             "NTW_RAKE_2",
             new ItemStack(Material.WEEPING_VINES),
-            Theme.TOOL,
-            "网络扳手 (2)",
-            "右键点击一个网络节点",
-            "可以立即破坏",
-            "",
+            Themes.TOOL,
+            "network-rake-2",
             LoreBuilder.usesLeft(1000)
         );
 
-        NETWORK_RAKE_3 = Theme.themedSlimefunItemStack(
+        NETWORK_RAKE_3 = Networks.getLanguageManager().getThemedStack(
             "NTW_RAKE_3",
-            getPreEnchantedItemStack(Material.WEEPING_VINES, true, new Pair<>(Enchantment.LUCK, 1)),
-            Theme.TOOL,
-            "网络扳手 (3)",
-            "右键点击一个网络节点",
-            "可以立即破坏",
-            "",
+            ItemStackGenerators.createEnchantedItemStack(
+                Material.WEEPING_VINES,
+                true,
+                new Pair<>(Enchantment.LUCK, 1)
+            ),
+            Themes.TOOL,
+            "network-rake-3",
             LoreBuilder.usesLeft(9999)
         );
-    }
-
-    @Nonnull
-    @SafeVarargs
-    public static ItemStack getPreEnchantedItemStack(Material material, boolean hide, @Nonnull Pair<Enchantment, Integer>... enchantments) {
-        ItemStack itemStack = new ItemStack(material);
-        ItemMeta itemMeta = itemStack.getItemMeta();
-        for (Pair<Enchantment, Integer> pair : enchantments) {
-            itemMeta.addEnchant(pair.getFirstValue(), pair.getSecondValue(), true);
-        }
-        if (hide) {
-            itemMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        }
-        itemStack.setItemMeta(itemMeta);
-        return itemStack;
     }
 }
