@@ -27,7 +27,6 @@ import org.bukkit.potion.PotionType;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.HashMap;
 import java.util.UUID;
 
 public class NetworkVanillaGrabber extends NetworkDirectional {
