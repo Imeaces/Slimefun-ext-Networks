@@ -6,11 +6,10 @@ import io.github.sefiraat.networks.network.NodeType;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
-import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.blocks.BlockPosition;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.protection.Interaction;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
+import net.guizhanss.networks.BlockCache;
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.Material;
@@ -88,28 +87,10 @@ public class NetworkVanillaGrabber extends NetworkDirectional {
         if (ownerUUID == null) {
             return;
         }
-        final UUID uuid = UUID.fromString(ownerUUID);
-        final OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(uuid);
+        final OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(UUID.fromString(ownerUUID));
 
-        if (offlinePlayer.isOnline()) {
-            // 玩家在线时检测权限
-            if (!Slimefun.getProtectionManager().hasPermission(offlinePlayer.getPlayer(), targetBlock, Interaction.INTERACT_BLOCK)) {
-                return;
-            }
-        } else {
-            // 玩家离线时，检测权限并缓存
-            BlockPosition position = new BlockPosition(targetBlock);
-            if (queryCache.containsKey(position)) {
-                if (!queryCache.get(position)) {
-                    return;
-                }
-            } else {
-                boolean hasPermission = Slimefun.getProtectionManager().hasPermission(offlinePlayer, targetBlock, Interaction.INTERACT_BLOCK);
-                queryCache.put(position, hasPermission);
-                if (!hasPermission) {
-                    return;
-                }
-            }
+        if (!BlockCache.canInteract(offlinePlayer, block.getLocation())) {
+            return;
         }
 
         final BlockState blockState = targetBlock.getState();

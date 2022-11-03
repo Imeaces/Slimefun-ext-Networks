@@ -180,6 +180,13 @@
             <version>8d1af6c570</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>com.residence</groupId>
+            <artifactId>Residence</artifactId>
+            <version>5.1.0.0</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/libs/Residence5.1.0.0.jar</systemPath>
+        </dependency>
 
         <!-- 汉化库 -->
         <dependency>
