@@ -43,7 +43,10 @@ public final class BlockCache {
                 return records.get(pos);
             }
 
-            boolean result = Slimefun.getProtectionManager().hasPermission(player, location, Interaction.INTERACT_BLOCK);
+            boolean result = false;
+            try {
+                result = Slimefun.getProtectionManager().hasPermission(player, location, Interaction.INTERACT_BLOCK);
+            } catch (NullPointerException ignored) {}
             records.put(pos, result);
             return result;
         }
