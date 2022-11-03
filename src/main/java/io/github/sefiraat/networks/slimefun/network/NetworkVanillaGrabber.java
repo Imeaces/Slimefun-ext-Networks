@@ -6,7 +6,6 @@ import io.github.sefiraat.networks.network.NodeType;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.blocks.BlockPosition;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import net.guizhanss.networks.BlockCache;
@@ -43,9 +42,6 @@ public class NetworkVanillaGrabber extends NetworkDirectional {
     private static final int WEST_SLOT = 19;
     private static final int UP_SLOT = 14;
     private static final int DOWN_SLOT = 32;
-
-    // cache the permission check result
-    private static final HashMap<BlockPosition, Boolean> queryCache = new HashMap<>();
 
     public NetworkVanillaGrabber(ItemGroup itemGroup,
                                  SlimefunItemStack item,
