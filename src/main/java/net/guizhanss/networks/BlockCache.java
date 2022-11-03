@@ -1,7 +1,7 @@
 package net.guizhanss.networks;
 
-import dev.sefiraat.netheopoiesis.dough.blocks.BlockPosition;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.blocks.BlockPosition;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.protection.Interaction;
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
