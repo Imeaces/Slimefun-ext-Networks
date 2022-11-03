@@ -84,7 +84,7 @@ public class NetworkVanillaGrabber extends NetworkDirectional {
         }
         final OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(UUID.fromString(ownerUUID));
 
-        if (!BlockCache.canInteract(offlinePlayer, block.getLocation())) {
+        if (!BlockCache.canInteract(offlinePlayer, targetBlock.getLocation())) {
             return;
         }
 
