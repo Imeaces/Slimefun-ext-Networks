@@ -220,7 +220,7 @@ public class NetworkQuantumStorage extends SlimefunItem implements DistinctiveIt
 
     @Override
     public void postRegister() {
-        addWikiPage(WIKI_PAGE);
+        addOfficialWikipage(WIKI_PAGE);
         new BlockMenuPreset(this.getId(), this.getItemName()) {
 
             @Override
