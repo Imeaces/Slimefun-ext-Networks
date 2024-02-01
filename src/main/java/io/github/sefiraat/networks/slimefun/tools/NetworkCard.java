@@ -98,7 +98,7 @@ public class NetworkCard extends SlimefunItem implements DistinctiveItem {
 
     @Override
     public void postRegister() {
-        addWikiPage(WIKI_PAGE);
+        addOfficialWikipage(WIKI_PAGE);
     }
 
     @Override

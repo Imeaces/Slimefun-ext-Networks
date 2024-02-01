@@ -99,6 +99,6 @@ public class NetworkRake extends LimitedUseItem {
 
     @Override
     public void postRegister() {
-        addWikiPage(WIKI_PAGE);
+        addOfficialWikipage(WIKI_PAGE);
     }
 }
